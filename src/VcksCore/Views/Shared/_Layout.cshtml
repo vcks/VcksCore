@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" asp-href-include="~/lib/**/bootstrap.css" />
+    <link rel="stylesheet" asp-href-include="~/css/Site.css" asp-append-version="true" />
+    @RenderSection("styles", false)
+    <script asp-src-include="~/lib/**/jquery.min.js"></script>
+    <script asp-src-include="~/lib/**/jquery.validate.min.js"></script>
+    <script asp-src-include="~/lib/**/jquery.validate.unobtrusive.min.js"></script>
+    <script asp-src-include="~/lib/**/bootstrap.min.js"></script>
+    <script asp-src-include="~/js/twemoji.min.js" asp-append-version="true"></script>
+    <script asp-src-include="~/js/jquery.mousewheel.js" asp-append-version="true"></script>
+</head>
+<body>
+
+    <div class="container myShadow">
+        <div id="MenuBlock" class="Scrollable">
+            @Html.Partial("_MenuBlock")
+        </div>
+
+        <div id="ContentBlock" class="Scrollable">
+            @RenderBody()
+        </div>
+    </div>
+
+    <form asp-antiforgery="true"></form>
+
+    <script>
+        $(function () {
+            $('#MenuBlock').mousewheel(function (event, delta) {
+                this.scrollLeft -= (delta * 30);
+                event.preventDefault();
+            });
+        });
+        function GetAntiForgeryToken() {
+            var tokenField = $("input[type='hidden'][name$='RequestVerificationToken']");
+            if (tokenField.length == 0) return null; else return tokenField[0].value;
+        }
+        $.ajaxPrefilter(function (options, localOptions, jqXHR) {
+            if (options.type !== "GET") {
+                var token = GetAntiForgeryToken();
+                if (token !== null) jqXHR.setRequestHeader('RequestVerificationToken', token);
+            }
+        });
+    </script>
+    @RenderSection("scripts", false)
+
+</body>
+</html>

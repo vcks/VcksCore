@@ -1,0 +1,26 @@
+﻿@using VcksCore.BLL.DTO
+
+@model List<UserProfileDTO>
+
+@foreach (UserProfileDTO u in Model)
+{
+    <div class="User myShadow">
+        <table>
+            <tr>
+                <td>
+                    <a asp-action="Profile" asp-controller="Home" asp-route-id="@u.Id">
+                        <img class="userPhotoImg img-responsive" src='@($"/File/{u.Avatar.Square_100Id}")'/>
+                    </a>
+                </td>
+                <td valign="top">
+                    <div class="UserName">
+                        <a asp-action="Profile" asp-controller="Home" asp-route-id="@u.Id" class="DefaultLink">@($"{u.FirstName} {u.LastName}")</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+
+

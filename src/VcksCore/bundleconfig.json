@@ -1,0 +1,24 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": []
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/bundle.js",
+    "inputFiles": [
+      "wwwroot/js/ImageViewer.js",
+      "wwwroot/js/jquery.mousewheel.js",
+      "wwwroot/js/Messages.js",
+      "wwwroot/js/Profile.js",
+      "wwwroot/js/twemoji.min.js"
+    ]
+  }
+]

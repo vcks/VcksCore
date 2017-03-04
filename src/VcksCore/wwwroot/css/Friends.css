@@ -1,0 +1,33 @@
+﻿#Explorer {
+    padding: 20px;
+}
+
+#Selector {
+    height:100%;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+#Friends, #Requests {
+    margin-bottom: 5px;
+}
+
+#SelectorColumn,#ExplorerColumn{
+    height:100%;
+}
+
+@media (max-width: 767px) {
+    #Selector, #SelectorColumn{
+        height:auto;
+    }
+
+    #ContentBlock{
+        overflow:hidden;
+    }
+
+    #Explorer{
+        margin-bottom:90px;
+    }
+}
+
+    

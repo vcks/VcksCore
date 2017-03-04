@@ -1,0 +1,44 @@
+﻿@section styles
+{
+    <link rel="stylesheet" asp-href-include="~/css/Messages.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-href-include="~/css/Spinner.css" asp-append-version="true" />
+}
+
+<div class="row nopadding" style="height:100%;">
+
+    <div class="col-xs-2 col-sm-2 col-md-3 col-lg-3 nopadding" style="height:100%">
+        <div id="child0" class="Scrollable">
+            <div id="DialogsPanel">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9 nopadding" style="height:100%;">
+        <div id="child1">
+            <div id="MessagesWindow">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <div id="child2">
+            <textarea id="MessagesTextField"></textarea>
+        </div>
+        <div id="child3">
+            <button id="MessageSendButton" class="PurpleButton" onclick="SendMessage();">Send</button>
+        </div>
+    </div>
+
+</div>
+
+@section scripts
+{
+
+    <script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script type="text/javascript">
+        var SelectedDialog=@(ViewBag.UserId != null ? ViewBag.UserId:0);
+        var CurrentUserId = @ViewBag.CurrentUserId;
+        var chat;
+    </script>
+    <script asp-src-include="~/js/Messages.js" asp-append-version="true"></script>
+}

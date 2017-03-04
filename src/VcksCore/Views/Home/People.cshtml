@@ -1,0 +1,41 @@
+﻿@using VcksCore.BLL.DTO
+@using VcksCore.Components;
+
+@section styles
+{
+    <link rel="stylesheet" asp-href-include="~/css/People.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-href-include="~/css/UserListPartial.css" asp-append-version="true" />
+}
+
+<div class="row nopadding" style="height:100%;" id="rr">
+    <div id="SelectorColumn" class="col-sm-3 col-sm-push-9 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9 nopadding">
+        <div id="Selector">
+            <div class="row nopadding">
+                <div class="col-xs-9 col-sm-12 col-md-12 col-lg-12 nopadding">
+                    <input id="SearchField" type="text" style="width:100%" />
+                </div>
+                <div class="col-xs-3 col-sm-12 col-md-12 col-lg-12 nopadding">
+                    <button id="SearchButton" class="PurpleButton" onclick="Search()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ExplorerColumn" class="col-sm-9 col-sm-pull-3 col-md-9 col-md-pull-3 col-lg-9 col-lg-pull-3 nopadding Scrollable" style="height:100%">
+        <div id="Explorer">
+            @await Component.InvokeAsync("UserList", new { count = 100 })
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function Search() {
+            var q = $('#SearchField').val();
+            $.get('/UserList?q=' + q, function (data) {
+                $('#Explorer').html(data);
+            });
+        }
+    </script>
+}

@@ -1,0 +1,30 @@
+﻿@using VcksCore.BLL.DTO
+@model List<WallPostDTO>
+@using VcksCore.TagHelpers
+
+<div id="Wall">
+    <div id="WallHeader">
+        <div id="CreatePost">
+            <button id="CreatePostButton" class="PurpleButton" onclick="ShowPostCreationWindow()">Write something stupid</button>
+            <table id="CreatePostWindow">
+                <tr>
+                    <td>
+                        <textarea id="CreatePostWindowTextArea" class="TextArea100Px"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <button id="CreatePostWindowButton" class="PurpleButton" onclick="WallPostCreate()">Post</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="WallContent">
+        @foreach (var p in Model)
+        {
+            <post wp='@p' user-id='@ViewBag.UserId'></post>
+        }
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿#Explorer {
+    padding: 20px;    
+}
+
+#Selector {
+    height:100%;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+#SearchField, #SearchButton {
+    margin-bottom: 10px;
+}
+
+#SearchButton{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#SelectorColumn,#ExplorerColumn{
+    height:100%;
+}
+
+@media (max-width: 767px) {
+    #SearchField, #SearchButton {
+        margin-bottom: 0;
+    }
+
+    #Selector, #SelectorColumn{
+        height:auto;
+    }
+
+    #ContentBlock{
+        overflow:hidden;
+    }
+
+    #Explorer{
+        margin-bottom:50px;
+    }
+}
+

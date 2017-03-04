@@ -1,0 +1,153 @@
+﻿
+#UserInfo tr:nth-child(odd) {
+    background-color:rgba(0,0,0,0.25);
+}
+
+#UserInfo .table-responsive, .table-borderless tbody tr td {
+    border: none;
+    vertical-align:middle;
+}
+
+#UserInfo label{
+    margin:0;
+}
+
+.Profile{
+    margin:20px;
+}
+
+#userPhotoImg {
+    width: 100%;
+    height: auto;
+}
+
+#UserFriends {
+    margin-top:5px;
+}
+
+#UserFriendsContent
+{
+    padding-top:10px;
+    padding-bottom:5px;
+
+    display:flex;
+
+    flex-direction:row;
+    -webkit-flex-direction:row;
+    
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items:stretch;
+}
+
+#UserFriendsLayout {
+    background-color:rgba(0,0,0,0.25);    
+}
+
+#UserFriendsLayoutTitle
+{
+    padding-left:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    background-color:rgba(0,0,0, 0.2);
+}
+
+.UserFriendsName {
+    margin-top:5px;
+    margin-bottom:5px;
+    overflow-x:hidden;
+    text-overflow:ellipsis;
+    word-break:break-all;
+    white-space: nowrap;
+}
+
+#d1{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    width:90px;
+}
+
+.WallPost {
+    margin-bottom: 10px;
+}
+
+.WallPostTable {
+    background-color: rgba(0,0,0,0.25);
+    table-layout: fixed;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.WallPostUserPhoto {
+    width: 85px;
+    height: auto;
+}
+
+.WallPostText {
+    margin-left:20px;
+    margin-top:10px;
+    margin-right:20px;
+    margin-bottom:20px;
+    white-space:pre-line;
+}
+
+.WallPostActions {
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.WallPostDate {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.WallPostUserName {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#CreatePostWindow {
+    display: none;
+    width: 100%;
+}
+
+#EditPostWindow {
+    width: 100%;
+}
+
+
+#SendAMessage,#Follow,#Unfollow, #ChangeUserPhoto{
+    margin-bottom:5px;
+}
+
+#WallHeader{
+    margin-bottom:10px;
+}
+
+@media (max-width: 767px) {
+    #UserPhoto,#UserInfo,#ProfileActions, #Wall {
+        padding-bottom:10px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    #UserPhoto,#UserInfo,#ProfileActions, #Wall {
+        padding: 10px;
+    }
+
+    #CreatePostWindowButton,#EditPostWindowButton {
+        width: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    .Profile{
+        margin-left:10px;
+        margin-top:10px;
+        margin-right:10px;        
+    }
+}

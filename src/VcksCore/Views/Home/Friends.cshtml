@@ -1,0 +1,41 @@
+﻿@using VcksCore.Components;
+
+@section styles
+{
+    <link rel="stylesheet" asp-href-include="~/css/Friends.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-href-include="~/css/UserListPartial.css" asp-append-version="true" />
+}
+
+<div class="row nopadding" style="height:100%;">
+    <div id="SelectorColumn" class="col-sm-3 col-sm-push-9 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9 nopadding">
+        <div id="Selector">
+            <button id="Requests" class="PurpleButton" onclick="ShowRequests()">Requests</button>
+            <button id="Friends" class="PurpleButton" onclick="ShowFriends()">Friends</button>
+        </div>
+    </div>
+
+    <div id="ExplorerColumn" class="col-sm-9 col-sm-pull-3 col-md-9 col-md-pull-3 col-lg-9 col-lg-pull-3 nopadding Scrollable">
+        <div id="Explorer">
+            @await Component.InvokeAsync("UserList", new { type = UserList.ListType.Friends, userId = ViewBag.CurrentUserId })
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        function ShowFriends() {
+            $.get('/UserList', {type : @((int)UserList.ListType.Friends) , userId : @ViewBag.CurrentUserId}, function (data) {
+                $('#Explorer').html(data);
+            });
+        }
+
+        function ShowRequests() {
+            $.get('/UserList', {type : @((int)UserList.ListType.Followers) , userId : @ViewBag.CurrentUserId}, function (data) {
+                $('#Explorer').html(data);
+            });
+        }
+
+    </script>
+}

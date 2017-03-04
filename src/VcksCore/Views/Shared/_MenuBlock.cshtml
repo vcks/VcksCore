@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using System.Security.Claims
+    
+<table>
+        <tr>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td><a asp-action="Profile" asp-controller="Home" class="MenuButton" asp-route-id="@int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)">Profile</a></td>
+                <td><a asp-action="Friends" asp-controller="Home" class="MenuButton">Friends</a></td>
+                <td><a asp-action="Messages" asp-controller="Home" class="MenuButton">Messages</a></td>
+                <td><a asp-action="People" asp-controller="Home" class="MenuButton">People</a></td>
+                <td><a asp-action="Something" asp-controller="Home" class="MenuButton">Something</a></td>
+                <td><a asp-action="Logout" asp-controller="Account" class="MenuButton">Logout</a></td>
+            }
+            else
+            {
+                <td><a asp-action="Index" asp-controller="Home" class="MenuButton">Home</a></td>
+                <td><a asp-action="Login" asp-controller="Account" class="MenuButton">Login</a></td>
+                <td><a asp-action="Register" asp-controller="Account" class="MenuButton">Register</a></td>
+            }
+        </tr>
+    </table>

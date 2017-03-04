@@ -1,0 +1,68 @@
+﻿@model VcksCore.Models.ProfileActionsModel
+
+<div id="ProfileActions">
+    @if (Model.Self)
+    {
+        <button id="ChangeUserPhoto" class="PurpleButton">Change photo</button>
+    }
+    else
+    {
+        <div id="SendAMessage">
+            <a asp-action="Messages" asp-controller="Home" asp-route-id="@Model.Id">
+                <button class="PurpleButton">Send a message</button>
+            </a>
+        </div>
+
+        if (Model.AmIFollowing || Model.IsMyFriend)
+        {
+            <button id="Unfollow" class="PurpleButton" onclick="Unfollow()">Unfollow</button>
+        }
+        else
+        {
+            <button id="Follow" class="PurpleButton" onclick="Follow()">Follow</button>
+        }
+    }
+
+    @if (Model.Friends.Count != 0)
+    {
+        <div id="UserFriends">
+
+            <div id="UserFriendsLayout" class="myShadow">
+
+                <div class="row nopadding">
+                    <div class="col-xs-12 col-xs-12 col-md-12 col-lg-12 nopadding">
+                        <div id="UserFriendsLayoutTitle" class="text-muted">
+                            Friends
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row nopadding" style="height:100%">
+                    <div id="UserFriendsContent">
+                        @foreach (var f in Model.Friends)
+                        {
+
+                            <div id="d1">
+                                <div id="dd1">
+                                    <a asp-action="Profile" asp-controller="Home" asp-route-id="@f.Id">
+                                        <img class="img-responsive myShadow" src="@Url.Action("Get", "File",new { id = f.Avatar.Square_100Id })" />
+                                    </a>
+                                </div>
+
+                                <div id="dd2">
+                                    <div class="UserFriendsName">
+                                        <a asp-action="Profile" asp-controller="Home" asp-route-id="@f.Id" class="DefaultLink">@f.FirstName</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>

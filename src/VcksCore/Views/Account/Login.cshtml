@@ -1,0 +1,35 @@
+﻿@model VcksCore.Models.LoginModel
+
+@section styles
+{
+    <link rel="stylesheet" asp-append-version="true" asp-href-include="~/css/Account.css" />
+}
+
+<div class="Account">
+
+    <form asp-antiforgery="true" class="form-horizontal">
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="col-sm-6 label-control"></label>
+            <div class="col-sm-6">
+                <input asp-for="Email" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="col-sm-6 label-control"></label>
+            <div class="col-sm-6">
+                <input asp-for="Password" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-6 col-sm-6">
+                <input id="LoginButton" type="submit" value="Login" class="PurpleButton"/>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,61 @@
+﻿@model VcksCore.Models.RegisterModel
+
+@section styles
+{
+    <link rel="stylesheet" asp-append-version="true" asp-href-include="~/css/Account.css"/>
+}
+
+<div class="Account">
+
+    <form asp-antiforgery="true" class = "form-horizontal" enctype = "multipart/form-data">
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-xs-12 col-sm-6 label-control"></label>
+            <div class="col-xs-12 col-sm-6">
+                <input asp-for="Email" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-xs-12 col-sm-6 label-control"></label>
+            <div class="col-xs-12 col-sm-6">
+                <input asp-for="FirstName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName" class="col-xs-12 col-sm-6 label-control"></label>
+            <div class="col-xs-12 col-sm-6">
+                <input asp-for="LastName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="col-xs-12 col-sm-6 label-control"></label>
+            <div class="col-xs-12 col-sm-6">
+                <input asp-for="Password" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PasswordConfirm" class="col-xs-12 col-sm-6 label-control"></label>
+            <div class="col-xs-12 col-sm-6">
+                <input asp-for="PasswordConfirm" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Avatar" class="col-xs-12 col-sm-6 label-control"></label>
+            <div id="avatar" class="col-xs-12 col-sm-6">
+                <input type="file" name="upload" accept="image/jpeg,image/png" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-offset-6 col-sm-6">
+                <input id="RegisterButton" type="submit" value="Register" class="PurpleButton" />
+            </div>
+        </div>
+    </form>
+
+</div>

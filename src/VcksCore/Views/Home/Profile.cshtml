@@ -1,0 +1,78 @@
+﻿@using VcksCore.BLL.DTO
+@model UserProfileDTO
+
+@section styles
+{
+    <link rel="stylesheet" asp-href-include="~/css/Profile.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-href-include="~/css/ImageViewer.css" asp-append-version="true" />
+}
+
+
+<div class="Profile">
+
+    <div class="row nopadding">
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 nopadding">
+            <div id="UserPhoto">
+
+                <img id="userPhotoImg" src="@Url.Action("Get", "File",new { id = Model.Avatar.SquareId })" data-max="@Url.Action("Get", "File",new { id = Model.Avatar.OriginalId })" class="img-responsive myShadow MaximizeImage" />
+
+                <div id="ImageViewer" class="imageViewer">
+                    <span class="ImageViewerClose" onclick="$('#ImageViewer').attr('display','none')">&times;</span>
+                    <img class="img-responsive imageViewerBig" id="ImageViewerBig">
+                    <div id="ImageViewerCaption"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 nopadding">
+            <div id="UserInfo">
+                <div class="table-responsive">
+                    <table class="table table-borderless myShadow">
+                        <tr>
+                            <td style="padding-left:20px">@Html.LabelFor(m => m.FirstName)</td>
+                            <td>@Html.DisplayFor(m => m.FirstName)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:20px">@Html.LabelFor(m => m.LastName)</td>
+                            <td>@Html.DisplayFor(m => m.LastName)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:20px">@Html.LabelFor(m => m.Email)</td>
+                            <td>@Html.DisplayFor(m => m.Email)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row nopadding">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 nopadding">
+            @await Component.InvokeAsync("ProfileActions", new { id = Model.Id })
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 nopadding">
+            @await Component.InvokeAsync("Wall", new { userId = Model.Id, count = 10, offset = 0 })
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        var ModelId = @Model.Id;
+        $(function(){
+            twemoji.size = '16x16';
+            twemoji.parse(document.body);
+        });
+    </script>
+    <script asp-src-include="~/js/Profile.js" asp-append-version="true"></script>
+    <script asp-src-include="~/js/ImageViewer.js" asp-append-version="true"></script>
+}
+
+
